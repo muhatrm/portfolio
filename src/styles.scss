@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Tailwind Components */
+@layer components {
+  /* Active Link State */
+  .nav-menu a.active {
+    @apply text-gray-900 font-semibold;
+  }
+
+  .dark .nav-menu a.active {
+    @apply text-gray-50;
+  }
+
+  /* Skill Badges */
+  .skill-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 cursor-default text-white;
+  }
+
+  .skill-server {
+    @apply bg-gradient-to-r from-red-400 to-red-600 shadow-lg shadow-red-400/30;
+  }
+
+  .skill-server:hover {
+    @apply -translate-y-1 scale-105 shadow-xl shadow-red-400/40;
+  }
+
+  .skill-network {
+    @apply bg-gradient-to-r from-green-400 to-green-600 shadow-lg shadow-green-400/30;
+  }
+
+  .skill-network:hover {
+    @apply -translate-y-1 scale-105 shadow-xl shadow-green-400/40;
+  }
+
+  .skill-security {
+    @apply bg-gradient-to-r from-purple-400 to-purple-600 shadow-lg shadow-purple-400/30;
+  }
+
+  .skill-security:hover {
+    @apply -translate-y-1 scale-105 shadow-xl shadow-purple-400/40;
+  }
+
+  .skill-cloud {
+    @apply bg-gradient-to-r from-blue-500 to-blue-700 shadow-lg shadow-blue-500/30;
+  }
+
+  .skill-cloud:hover {
+    @apply -translate-y-1 scale-105 shadow-xl shadow-blue-500/40;
+  }
+
+  /* Contact Buttons */
+  .btn-primary {
+    @apply bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-6 py-3 rounded-full font-semibold min-w-36 h-12 flex items-center justify-center gap-2 transition-all duration-300 shadow-lg shadow-purple-500/40;
+  }
+
+  .btn-primary:hover {
+    @apply -translate-y-0.5 shadow-xl shadow-purple-500/50;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border-2 border-gray-600 text-gray-600 px-6 py-3 rounded-full font-semibold min-w-36 h-12 flex items-center justify-center gap-2 transition-all duration-300;
+  }
+
+  .btn-outline:hover {
+    @apply bg-gradient-to-r from-gray-600 to-gray-700 text-white -translate-y-0.5 shadow-lg;
+  }
+
+  /* Dark Mode für Buttons */
+  .dark .btn-outline {
+    @apply border-gray-400 text-gray-300;
+  }
+
+  .dark .btn-outline:hover {
+    @apply from-gray-500 to-gray-600 border-gray-300 text-white;
+  }
+}
+
+/* FIXED - Global Background mit Transition */
+html {
+  @apply transition-colors duration-300;
+  background-color: white;
+}
+
+html.dark {
+  background-color: #111827; /* gray-900 */
+}
+
+body {
+  @apply transition-colors duration-300;
+  background-color: transparent;
+}
+
+body.dark-mode {
+  background-color: transparent;
+}

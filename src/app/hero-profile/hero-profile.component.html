@@ -1,0 +1,83 @@
+<div class="max-w-4xl mx-auto p-4 transition-all duration-300"
+     [class.dark]="isDarkMode">
+
+  <!-- Gradient Background Header -->
+  <div class="h-32 rounded-2xl relative -mb-16 transition-all duration-300 shadow-lg
+              bg-gradient-to-r from-purple-500 via-purple-600 to-purple-500 shadow-purple-500/30
+              dark:from-indigo-600 dark:via-purple-600 dark:to-pink-600 dark:shadow-indigo-600/40">
+  </div>
+
+  <!-- Profile Card -->
+  <div class="bg-white rounded-2xl p-8 relative transition-all duration-300
+              shadow-lg shadow-black/8
+              dark:bg-gray-800 dark:shadow-black/60 dark:border dark:border-gray-700/20">
+
+    <!-- Avatar -->
+    <div class="w-32 h-32 mx-auto mb-6 bg-white rounded-full
+                shadow-lg flex items-center justify-center
+                dark:bg-gray-700 dark:shadow-black/50">
+      <img [src]="profile.image" [alt]="profile.name"
+           class="w-full h-full rounded-full object-cover transform scale-80" />
+    </div>
+
+    <!-- Profil Info -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2 transition-colors
+                 dark:text-gray-50">
+        {{ profile.name }}
+      </h1>
+      <p class="text-lg text-gray-600 mb-6 transition-colors
+                dark:text-gray-300">
+        {{ profile.title }}
+      </p>
+
+      <!-- Skill Badges mit Tailwind -->
+      <div class="flex gap-3 justify-center flex-wrap mt-4">
+        <div *ngFor="let skill of profile.skills; let i = index"
+             class="skill-badge"
+             [ngClass]="{
+               'skill-server': i === 0,
+               'skill-network': i === 1,
+               'skill-security': i === 2,
+               'skill-cloud': i === 3
+             }">
+          <i [class]="getSkillIcon(skill)" class="text-base"></i>
+          <span>{{ skill }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Me -->
+    <div class="mt-6 pt-6 border-t border-gray-200 transition-colors
+                dark:border-gray-700">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4 transition-colors
+                 dark:text-gray-50">
+        About Me
+      </h2>
+      <p class="text-base leading-relaxed text-gray-700 transition-colors
+                dark:text-gray-300">
+        {{ profile.description }}
+      </p>
+    </div>
+
+    <!-- Contact Buttons -->
+    <div class="mt-6 pt-6 border-t border-gray-200 transition-colors
+                dark:border-gray-700">
+      <h2 class="text-xl font-semibold text-gray-900 mb-4 transition-colors
+                 dark:text-gray-50">
+        Contact me
+      </h2>
+      <div class="flex gap-4 flex-wrap">
+        <button (click)="sendEmail()" class="btn-primary">
+          <i class="fa-solid fa-envelope text-base"></i>
+          <span>Mail</span>
+        </button>
+
+        <button (click)="openGitHub()" class="btn-outline">
+          <i class="fa-brands fa-github text-base"></i>
+          <span>GitHub</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
