@@ -24,7 +24,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     description: 'As a passionate Computer Science Expert, I develop modern web applications with a focus on user experience and performance.',
     skills: ['Server', 'Network', 'Security', 'Coding'],
     social: {
-      email: 'mailto:muhammed.ali.tuerkmen@gmail.com',
+      emailUser: 'muhammed.ali.tuerkmen',
+      emailDomain: 'gmail.com',
       github: 'https://github.com/muhatrm'
     }
   };
@@ -57,6 +58,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   sendEmail(): void {
-    window.location.href = this.profile.social.email;
+    const email = `${this.profile.social.emailUser}@${this.profile.social.emailDomain}`;
+    window.location.href = `mailto:${email}`;
   }
 }
