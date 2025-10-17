@@ -10,6 +10,7 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+package-lock.json
 
 # IDEs and editors
 .idea/
@@ -41,3 +42,46 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# ============================================
+# Docker & Deployment (für Public Repo)
+# ============================================
+
+# Docker Compose mit Server-spezifischen Configs
+docker-compose.yml
+docker-compose.*.yml
+
+# Nginx Reverse Proxy Config (enthält Domain)
+nginx-proxy.conf
+nginx-proxy.*.conf
+
+# SSL Zertifikate & Certbot
+certbot/
+*.pem
+*.key
+*.crt
+*.csr
+
+# Environment Variables & Secrets
+.env
+.env.*
+!.env.example
+
+# Deployment Scripts mit Credentials
+deploy.sh
+deploy-*.sh
+
+# Logs & Runtime
+logs/
+*.log
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# ============================================
+# Keep these files (Examples & Templates)
+# ============================================
+# Dockerfile bleibt (öffentlich OK)
+# nginx.conf bleibt (Container-Config ohne Domain)
+# .dockerignore bleibt

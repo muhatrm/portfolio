@@ -1,6 +1,9 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { DarkModeService } from '../services/dark-mode.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -9,16 +12,16 @@ import { CommonModule } from '@angular/common';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit, OnDestroy {
   isDarkMode = false;
+  isMobileMenuOpen = false; // Mobile Menu State
+  private destroy$ = new Subject<void>();
 
-  // Event Emitter für Dark Mode
-  @Output() darkModeChanged = new EventEmitter<boolean>();
   profile = {
     name: 'Muhammed Ali Türkmen',
     title: 'Computer Science Expert',
     image: 'assets/logo.png',
-    description: 'As a passionate Computer Science Expert, I develop modern web applications with a focus on user experience and performance. My expertise lies in frontend technologies like Angular and modern CSS frameworks.',
+    description: 'As a passionate Computer Science Expert, I develop modern web applications with a focus on user experience and performance.',
     skills: ['Server', 'Network', 'Security', 'Coding'],
     social: {
       email: 'mailto:muhammed.ali.tuerkmen@gmail.com',
@@ -26,14 +29,34 @@ export class NavbarComponent {
     }
   };
 
-  toggleDarkMode() {
-    this.isDarkMode = !this.isDarkMode;
-    this.darkModeChanged.emit(this.isDarkMode);
-    document.body.classList.toggle('dark-mode');
+  constructor(private darkModeService: DarkModeService) {}
+
+  ngOnInit(): void {
+    this.darkModeService.isDarkMode$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(isDark => {
+        this.isDarkMode = isDark;
+      });
   }
 
-  sendEmail() {
-    window.location.href = this.profile.social.email;
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
+  }
+
+  sendEmail(): void {
+    window.location.href = this.profile.social.email;
   }
 }

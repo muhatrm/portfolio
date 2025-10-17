@@ -1,35 +1,21 @@
-import { Component, Renderer2, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HeroProfileComponent } from './hero-profile/hero-profile.component';
+import { DarkModeService } from './services/dark-mode.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, HeroProfileComponent],
+  standalone: true,
+  imports: [RouterOutlet, NavbarComponent, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  isDarkMode = false;
+  // Inject Service über constructor
+  constructor(private darkModeService: DarkModeService) {}
 
-  constructor(
-    private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
-  ) {}
-
-  // Dark Mode toggle - setzt 'dark' Class auf HTML Element
-  toggleDarkMode() {
-    this.isDarkMode = !this.isDarkMode;
-
-    if (this.isDarkMode) {
-      this.renderer.addClass(this.document.documentElement, 'dark');
-      this.renderer.addClass(this.document.body, 'dark-mode');
-    } else {
-      this.renderer.removeClass(this.document.documentElement, 'dark');
-      this.renderer.removeClass(this.document.body, 'dark-mode');
-    }
-
-    console.log('Dark Mode:', this.isDarkMode);
+  toggleDarkMode(): void {
+    this.darkModeService.toggle();
   }
 }

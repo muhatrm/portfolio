@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
+import { DarkModeService } from '../services/dark-mode.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-hero-profile',
@@ -9,16 +11,15 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './hero-profile.component.html',
   styleUrls: ['./hero-profile.component.scss']
 })
-export class HeroProfileComponent {
-  // Dark Mode Input von Navbar
-  @Input() isDarkMode = false;
+export class HeroProfileComponent implements OnInit, OnDestroy {
+  isDarkMode = false;
+  private destroy$ = new Subject<void>();
 
-  // Profil Daten
   profile = {
     name: 'Muhammed Ali Türkmen',
     title: 'Computer Science Expert',
     image: 'assets/logo.png',
-    description: 'As a passionate Computer Science Expert, I develop modern web applications with a focus on user experience and performance. My expertise lies in frontend technologies like Angular and modern CSS frameworks.',
+    description: 'As a passionate Computer Science Expert, I develop modern web applications with a focus on user experience and performance.',
     skills: ['Server', 'Network', 'Security', 'Coding'],
     social: {
       email: 'mailto:muhammed.ali.tuerkmen@gmail.com',
@@ -26,7 +27,21 @@ export class HeroProfileComponent {
     }
   };
 
-  // Icon Mapping für Skills
+  constructor(private darkModeService: DarkModeService) {}
+
+  ngOnInit(): void {
+    this.darkModeService.isDarkMode$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(isDark => {
+        this.isDarkMode = isDark;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   getSkillIcon(skill: string): string {
     const iconMap: { [key: string]: string } = {
       'Server': 'fa-solid fa-server',
@@ -37,13 +52,11 @@ export class HeroProfileComponent {
     return iconMap[skill] || 'pi pi-cog';
   }
 
-  // Email öffnen
-  sendEmail() {
+  sendEmail(): void {
     window.location.href = this.profile.social.email;
   }
 
-  // GitHub öffnen
-  openGitHub() {
+  openGitHub(): void {
     window.open(this.profile.social.github, '_blank');
   }
 }
