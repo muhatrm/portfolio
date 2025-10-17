@@ -1,0 +1,12 @@
+// Nur noch PrimeNG Button overrides falls nötig
+:host ::ng-deep .p-button {
+  display: none; // Falls PrimeNG Buttons noch da sind, verstecken
+}
+
+// Responsive Adjustments falls nötig
+@media (max-width: 768px) {
+  .skill-badge {
+    @apply text-xs px-3 py-2;
+  }
+}
+
