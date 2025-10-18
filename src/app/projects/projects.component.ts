@@ -31,12 +31,22 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     {
       id: 1,
       title: 'Portfolio Website',
-      description: 'Modern Angular portfolio with dark mode, responsive design, and smooth animations.',
+      description: 'Modern portfolio web application with dark/light theme toggle, responsive design, and animated user experience.',
       technologies: ['Angular', 'TypeScript', 'Tailwind', 'PrimeNG'],
       image: 'assets/projects/portfolio.png',
       github: 'https://github.com/muhatrm/portfolio',
       live: 'https://tuerkmen.dev',
       category: 'web'
+    },
+    {
+      id: 2,
+      title: 'PhotoFinder Game Website',
+      description: 'Vocational school project: Multiplayer image guessing game with real-time sync and role-based administration.',
+      technologies: ['React/TS', 'Vite', 'Node.JS', 'Express', 'Socket.IO', 'MySQL'],
+      image: '/assets/projects/photofinder.png',
+      live: 'https://photofinder.tuerkmen.dev',
+      github: 'https://github.com/muhatrm/Photofinder',
+      category: 'fullstack'
     }
 
   ];
