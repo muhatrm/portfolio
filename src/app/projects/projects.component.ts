@@ -42,7 +42,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       id: 2,
       title: 'PhotoFinder Game Website',
       description: 'Vocational school project: Multiplayer image guessing game with real-time sync and role-based administration.',
-      technologies: ['React/TS', 'Vite', 'Node.JS', 'Express', 'Socket.IO', 'MySQL'],
+      technologies: ['React/TS', 'Node.JS', 'Express', 'MySQL'],
       image: '/assets/projects/photofinder.png',
       live: 'https://photofinder.tuerkmen.dev',
       github: 'https://github.com/muhatrm/Photofinder',
