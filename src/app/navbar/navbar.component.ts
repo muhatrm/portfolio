@@ -19,9 +19,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   profile = {
     name: 'Muhammed Ali Türkmen',
-    title: 'Computer Science Expert',
+    title: 'Fullstack Developer',
     image: 'assets/logo.png',
-    description: 'As a passionate Computer Science Expert, I develop modern web applications with a focus on user experience and performance.',
+    description: 'As a full-stack developer, I build efficient, modern web applications with a clear focus on performance, scalability, and seamless user experience.',
     skills: ['Server', 'Network', 'Security', 'Coding'],
     social: {
       emailUser: 'muhammed.ali.tuerkmen',

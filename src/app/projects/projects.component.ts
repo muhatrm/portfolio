@@ -46,6 +46,16 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       image: '/assets/projects/photofinder.png',
       live: 'https://photofinder.tuerkmen.dev',
       github: 'https://github.com/muhatrm/Photofinder',
+      category: 'fullstack',
+    },
+    {
+      id: 3,
+      title: 'Mini Inventar',
+      description: 'Demo inventory platform: Real-time asset tracking with role-based permissions and streamlined equipment management.',
+      technologies: ['Angular', 'Node.JS', 'Bootstrap', 'Docker'],
+      image: '/assets/projects/inventur.png',
+      live: 'https://inventur.tuerkmen.dev',
+      github: 'https://github.com/muhatrm/mini-inventar',
       category: 'fullstack'
     }
 
