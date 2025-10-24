@@ -56,7 +56,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       image: '/assets/projects/inventur.png',
       live: 'https://inventur.tuerkmen.dev',
       github: 'https://github.com/muhatrm/mini-inventur',
-      category: 'fullstack'
+      category: 'web'
     }
 
   ];
