@@ -51,7 +51,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     {
       id: 3,
       title: 'Mini Inventar',
-      description: 'Demo inventory platform: Real-time asset tracking with role-based permissions and streamlined equipment management.',
+      description: 'Demo inventory platform: Real-time tracking with role-based access and streamlined management.',
       technologies: ['Angular', 'Node.JS', 'Bootstrap', 'Docker'],
       image: '/assets/projects/inventur.png',
       live: 'https://inventur.tuerkmen.dev',
