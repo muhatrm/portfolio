@@ -55,7 +55,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       technologies: ['Angular', 'Node.JS', 'Bootstrap', 'Docker'],
       image: '/assets/projects/inventur.png',
       live: 'https://inventur.tuerkmen.dev',
-      github: 'https://github.com/muhatrm/mini-inventar',
+      github: 'https://github.com/muhatrm/mini-inventur',
       category: 'fullstack'
     }
 
